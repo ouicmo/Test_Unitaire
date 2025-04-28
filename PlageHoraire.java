@@ -1,5 +1,6 @@
 import java.util.Arrays;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class PlageHoraire implements Comparable<PlageHoraire>{
     private final static int chDureeMini = 15;
     private Horaire chHoraireDebut;
@@ -53,6 +54,7 @@ public class PlageHoraire implements Comparable<PlageHoraire>{
     }
 
     @Test
+    @Order(1)
     void testPlageAvant() {
         PlageHoraire plage1 = new PlageHoraire(new Horaire(8, 0), new Horaire(9, 0));
         PlageHoraire plage2 = new PlageHoraire(new Horaire(9, 30), new Horaire(10, 0));
@@ -60,6 +62,7 @@ public class PlageHoraire implements Comparable<PlageHoraire>{
     }
 
     @Test
+    @Order(2)
     void testPlageApres() {
         PlageHoraire plage1 = new PlageHoraire(new Horaire(11, 0), new Horaire(12, 0));
         PlageHoraire plage2 = new PlageHoraire(new Horaire(9, 0), new Horaire(10, 0));
@@ -67,6 +70,7 @@ public class PlageHoraire implements Comparable<PlageHoraire>{
     }
 
     @Test
+    @Order(3)
     void testPlageChevauchement() {
         PlageHoraire plage1 = new PlageHoraire(new Horaire(9, 0), new Horaire(10, 30));
         PlageHoraire plage2 = new PlageHoraire(new Horaire(10, 0), new Horaire(11, 0));
