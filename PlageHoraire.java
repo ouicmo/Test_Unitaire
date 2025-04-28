@@ -52,6 +52,27 @@ public class PlageHoraire implements Comparable<PlageHoraire>{
         }
     }
 
+    @Test
+    void testPlageAvant() {
+        PlageHoraire plage1 = new PlageHoraire(new Horaire(8, 0), new Horaire(9, 0));
+        PlageHoraire plage2 = new PlageHoraire(new Horaire(9, 30), new Horaire(10, 0));
+        assertEquals(-1, plage1.compareTo(plage2)); // P1
+    }
+
+    @Test
+    void testPlageApres() {
+        PlageHoraire plage1 = new PlageHoraire(new Horaire(11, 0), new Horaire(12, 0));
+        PlageHoraire plage2 = new PlageHoraire(new Horaire(9, 0), new Horaire(10, 0));
+        assertEquals(1, plage1.compareTo(plage2)); // P2
+    }
+
+    @Test
+    void testPlageChevauchement() {
+        PlageHoraire plage1 = new PlageHoraire(new Horaire(9, 0), new Horaire(10, 30));
+        PlageHoraire plage2 = new PlageHoraire(new Horaire(10, 0), new Horaire(11, 0));
+        assertEquals(0, plage1.compareTo(plage2)); // P3
+    }
+
 
 
 }
